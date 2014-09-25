@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2325277574">
+    <data-source source="LOCAL" name="Rails warmup: development" uuid="3ff680d6-0f6b-454b-a97e-20f418a95f97">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:warmup_development</jdbc-url>
+      <user-name>warmup</user-name>
+      <user-password>dfc6dfcbdfc1dfcfdfd8dfd9</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails warmup: test" uuid="70d4136e-b7d9-4200-87a7-d1d564cb20b7">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:warmup_test</jdbc-url>
+      <user-name>warmup</user-name>
+      <user-password>dfc6dfcbdfc1dfcfdfd8dfd9</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails warmup: production" uuid="0d67527e-135b-4f6e-b8d5-1ee8df8eb6fd">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:warmup_production</jdbc-url>
+      <user-name>warmup</user-name>
+      <user-password>dfc6dfcbdfc1dfcfdfd8dfd9</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
