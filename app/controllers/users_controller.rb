@@ -68,14 +68,6 @@ class UsersController < ApplicationController
           end
         end
       end
-      if u
-        @user = u
-        @user.count = @user.count+1
-        @user.save
-        render 'count'
-      else
-        redirect_to action: :sign_in
-      end
     end
   end
 
