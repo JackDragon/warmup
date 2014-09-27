@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_from_args(u, p):
+  def create_from_args(u, p)
     use = User.new(:user => u, :password => p, :count => 0)
     return use.save
   end
