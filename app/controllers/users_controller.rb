@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     p "*"*30
 
     u = params[:u]
-    user = u[:user]
+    user = u[:username]
     pw = u[:password]
     type = params[:commit]
     if type == "signup"

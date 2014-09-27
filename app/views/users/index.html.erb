@@ -4,8 +4,8 @@
 <div class="Sign_Form">
   <h1>Sign Up</h1>
   <%= form_for @user, :as => :u do |f| %>
-      <p> Username:</br> <%= f.text_field :user%> </p>
-      <p> Password:</br> <%= f.text_field :password%></p>
+      <p> Username:</br> <%= f.text_field :username %> </p>
+      <p> Password:</br> <%= f.text_field :password %></p>
       <!--<input id="signin" name="submit_action" type="submit" value="Signin">-->
       <!--<input id="signup" name="submit_action" type="submit" value="Sign Up">-->
       <%= f.submit 'Log In', :type => 'submit', :value => 'login' %>
