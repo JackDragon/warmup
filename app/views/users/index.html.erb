@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="Sign_Form">
+  <h1>Sign Up</h1>
+  <%= form_for @user, :as => :user do |f| %>
+      <p> Username:</br> <%= f.text_field :user%> </p>
+      <p> Password:</br> <%= f.text_field :password%></p>
+      <!--<input id="signin" name="submit_action" type="submit" value="Signin">-->
+      <!--<input id="signup" name="submit_action" type="submit" value="Sign Up">-->
+      <%= f.submit 'Log In', :type => 'submit', :value => 'login' %>
+      &nbsp;&nbsp;&nbsp;
+      <%= f.submit 'Sign Up', :type => 'submit', :value => "signup" %>
+  <% end %>
+</div>
+<% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+      <% for message_error in @user.errors.full_messages %>
+          <li>* <%= message_error %></li>
+      <% end %>
+<% end %>
+</ul>
+</body>
+</html>
