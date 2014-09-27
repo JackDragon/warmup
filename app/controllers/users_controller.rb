@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     p params
     p "*"*30
 
-    u = params[:user]
+    u = params[:u]
     user = u[:user]
     pw = u[:password]
     type = params[:commit]
