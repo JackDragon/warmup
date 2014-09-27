@@ -10,9 +10,10 @@ class UsersController < ApplicationController
     pw = u[:password]
     type = params[:commit]
     if type == "signup"
-      user = create_from_args(user, pw)
+      # user = create_from_args(user, pw)
       respond_to do |format|
         format.html do
+          user = User.new(:user => user, :password => pw, :count => 0)
           if user.save
             @user = user
             render 'index'
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
           end
         end
         format.json do
+          user = User.new(:user => user, :password => pw, :count => 0)
           if user.save
             render json: {errCode: 1, count: 0}
           else
@@ -99,10 +101,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_from_args(u, p)
-    use = User.new(:user => u, :password => p, :count => 0)
-    return use.save
-  end
+  # def create_from_args(u, p)
+  #   use = User.new(:user => u, :password => p, :count => 0)
+  #   if use.save
+  #     return use
+  #   return
+  #   end
+  # end
 
   def count
     @user.count = @user.count+1
@@ -114,6 +119,10 @@ class UsersController < ApplicationController
   end
 
   def show
+
+  end
+
+  def update
 
   end
 
