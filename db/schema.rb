@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 1) do
   enable_extension "plpgsql"
 
   create_table "users", force: true do |t|
-    t.string  "username"
+    t.string  "user"
     t.string  "password"
     t.string  "password_hash"
     t.integer "count"
