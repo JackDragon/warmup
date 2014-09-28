@@ -9,7 +9,32 @@ class UsersController < ApplicationController
     user = u[:user]
     pw = u[:password]
     type = params[:commit]
-    if type == "signup"
+    if type == "login"
+      u = User.authenticate(user, pw)
+
+      respond_to do |format|
+        format.html do
+          if u
+            @user = u
+            @user.count = @user.count+1
+            @user.save
+            render 'count'
+          else
+            redirect_to action: :sign_in
+          end
+        end
+        format.json do
+          if u
+            @user = u
+            @user.count = @user.count+1
+            @user.save
+            render json: {errCode: 1, count: @user.count}
+          else
+            render json: {errCode: -1}
+          end
+        end
+      end
+    else
       # user = create_from_args(user, pw)
       respond_to do |format|
         format.html do
@@ -36,35 +61,6 @@ class UsersController < ApplicationController
               errCode = errCode.to_i
               render json: {errCode: errCode}
             end
-          end
-        end
-      end
-
-      # @user = User.new
-      # render 'index'
-    end
-    if type == "login"
-      u = User.authenticate(user, pw)
-
-      respond_to do |format|
-        format.html do
-          if u
-            @user = u
-            @user.count = @user.count+1
-            @user.save
-            render 'count'
-          else
-            redirect_to action: :sign_in
-          end
-        end
-        format.json do
-          if u
-            @user = u
-            @user.count = @user.count+1
-            @user.save
-            render json: {errCode: 1, count: @user.count}
-          else
-            render json: {errCode: -1}
           end
         end
       end
