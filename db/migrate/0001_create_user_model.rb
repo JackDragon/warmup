@@ -1,7 +1,7 @@
 class CreateUserModel < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.column :username, :string
+      t.column :user, :string
       t.column :password, :string
       t.column :count, :integer
     end

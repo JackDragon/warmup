@@ -4,7 +4,7 @@
 <div class="Sign_Form">
   <h1>Sign Up</h1>
   <%= form_for @user, :as => :u do |f| %>
-      <p> Username:</br> <%= f.text_field :username %> </p>
+      <p> Username:</br> <%= f.text_field :user %> </p>
       <p> Password:</br> <%= f.text_field :password %></p>
       <!--<input id="signin" name="submit_action" type="submit" value="Signin">-->
       <!--<input id="signup" name="submit_action" type="submit" value="Sign Up">-->
@@ -12,6 +12,13 @@
       &nbsp;&nbsp;&nbsp;
       <%= f.submit 'Sign Up', :type => 'submit', :value => "signup" %>
   <% end %>
+
+  <!-- <%= form_tag("/add", method: "post") do %>
+    <%= label_tag(:username, "Username") %>
+    <%= label_tag(:password, "Password") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+  <% end %> -->
 </div>
 <% if @user.errors.any? %>
     <ul class="Signup_Errors">
