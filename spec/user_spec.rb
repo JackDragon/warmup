@@ -2,51 +2,48 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe User do
-    before :each do
-      @user = User.new
-    end
+    # before :each do
+    # end
 
-    # Models stuff
+    # it "should fail user blank" do
+    #   u = User.new
+    #   expect(u.save).to_not be_valid
+    # end
+    
+    Models stuff
     it "should fail user blank" do
-      @user.password = "tenletters"
-      expect(@user.save).to_not be_valid
+      testuser = User.make(user: "", password: "tenletters")
+      # testuser.password = "tenletters"
+      expect(testuser.save).to_not be_valid
     end
 
     it "should fail username length" do
-      @user.user = "tenletters"*20
-      expect(@user.save).to_not be_valid
+      testuser = User.make(user: "tenletters"*20)
+      expect(testuser.save).to_not be_valid
     end
 
     it "should fail password legnth" do
-      @user.user = "james"
-      @user.password = "tenletters"*20
-      expect(@user.save).to_not be_valid
+      testuser = User.make(user:"james", password:"tenletters"*20)
+      expect(testuser.save).to_not be_valid
     end
 
     it "should fail user unique" do
-      @user.user = "jack"
-      @user.password = "asdf"
-      @user.count = 3
-      expect(@user.save).to be_valid
-      @user = User.new
-      @user.user = "jack"
-      expect(@user.save).to_not be_valid
+      testuser = User.make(user: "jack", password: "asdf", count: 3)
+      expect(testuser.save).to be_valid
+      testuser = User.make(user: "jack")
+      expect(testuser.save).to_not be_valid
     end
 
     it "add user = has users" do
-      @user.user = "Jack"
-      @user.password = "pw"
-      @user.count = 0
-      expect(@user.save).to be_valid
+      testuser = User.make(user: "Jack", password: "pw", count: 0)
+      expect(testuser.save).to be_valid
       expect(User.count).to eq 1
     end
 
     # TESTAPI stuff
     it "reset = no users" do
-      @user.user = "Jack"
-      @user.password = "pw"
-      @user.count = 0
-      expect(@user.save).to be_valid
+      testuser = User.make(user: "Jack", password: "pw")
+      expect(testuser.save).to be_valid
       User.TESTAPI_resetFixture
       expect(User.count).to eq 0
     end
@@ -58,29 +55,23 @@ describe User do
 
     # Authentication stuff
     it "wrong authentication = nil" do
-      @user.user = "Jack"
-      @user.password = "pw"
-      @user.count = 0
-      expect(@user.save).to be_valid
-      u = User.authenticate("Jack", "wrongpw")
+      testuser = User.make(user: "Jack", password: "pw", count: 0)
+      expect(testuser.save).to be_valid
+      u = User.authenticate(user: "Jack", password: "wrongpw")
       expect(u).to eq nil
     end
 
     it "correct authentication = user" do
-      @user.user = "Jack"
-      @user.password = "pw"
-      @user.count = 0
-      expect(@user.save).to be_valid
-      u = User.authenticate("Jack", "pw")
-      expect(u).to eq @user
+      testuser = User.make(user: "Jack", password: "pw", count: 0)
+      expect(testuser.save).to be_valid
+      u = User.authenticate(user: "Jack", password: "pw")
+      expect(u).to eq testuser
     end
 
     it "no username stored authentication = nil" do
-      @user.user = "Jack"
-      @user.password = "pw"
-      @user.count = 0
-      expect(@user.save).to be_valid
-      u = User.authenticate("notJack", "pw")
+      testuser = User.make(user: "Jack", password: "pw", count: 0)
+      expect(testuser.save).to be_valid
+      u = User.authenticate(user: "notJack", password: "pw")
       expect(u).to eq nil
     end
 end

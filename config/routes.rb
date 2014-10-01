@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   post 'users/add' => 'users#create'
   post 'users/login' => 'users#login'
   post 'TESTAPI/resetFixture' => 'testapi#reset'
-  post 'TESTAPI/unitTests' => 'testapi#tests'
+  post 'TESTAPI/unitTests' => 'testapi#test'
   get 'TESTAPI/resetFixture' => 'testapi#reset'
-  get 'TESTAPI/unitTests' => 'testapi#tests'
+  get 'TESTAPI/unitTests' => 'testapi#test'
+  post 'users/make' => 'users#make'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
