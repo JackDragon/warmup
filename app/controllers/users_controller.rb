@@ -33,7 +33,18 @@ class UsersController < ApplicationController
           errCode = user.errors.first[1]
           # render html: errCode
           @user = User.new
-          flash[:notice] = user.errors.full_messages.first
+          err = user.errors.full_messages.first
+          if err == "Password -4"
+            flash[:notice] = "The password should be at most 128 characters long. Please try
+again."
+          elsif err == "User -3"
+              flash[:notice] = "The user name should be non-empty and at most 128 characters
+long. Please try again."
+          elsif err == "User -2"
+              flash[:notice] = "This username already exists. Please try again."
+          else
+            flash[:notice] = err
+          end
           render 'index'
         end
       end
