@@ -31,7 +31,8 @@ html {
     background-color: #E1E1EE;
     text-align: left;
     font-family: Verdana;
-    background-image: url(bg.jpg);
+    /*background-image: url(bg.jpg);*/
+    background-image: url(http://i.imgur.com/PltXAn7.jpg);
 }
 
 .container {
