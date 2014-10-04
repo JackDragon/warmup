@@ -26,9 +26,13 @@ class UsersController < ApplicationController
         # user = create_from_args(user, pw)
         user = User.new(:user => user, :password => pw, :count => 0)
         if user.save
-          @user = User.new
-          flash[:notice] = "1: Signed up successfully. You can now login."
-          render 'index'
+          # @user = User.new
+          # flash[:notice] = "1: Signed up successfully. You can now login."
+          # render 'index'
+          @user = user
+          @user.count = @user.count+1
+          @user.save
+          render 'count'
         else
           errCode = user.errors.first[1]
           # render html: errCode

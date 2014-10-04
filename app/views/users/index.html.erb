@@ -3,8 +3,25 @@
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <%= javascript_include_tag "index", "data-turbolinks-track" => true %> 
-  <!-- We don't really use this right now, but I was testing. -->
+  <!-- Yay working client side validation! -->
   <script type = "text/javascript">
+      function validate() {
+          // alert("Checking...");
+          var x = $("#u_user")[0].value;
+          if (x == null || x == "") {
+              alert("Username must not be blank");
+              return false;
+          }
+          else if (x.length > 128) {
+              alert("Username must not be greater than 128 chars.");
+              return false;
+          }
+          var y = $("#u_password")[0].value;
+          if (y != null && y.length > 128) {
+              alert("Passwoord must not be greater than 128 chars");
+              return false;
+          }
+      }
   </script>
 </head>
 <body
@@ -20,11 +37,9 @@
     <%= form_for @user, :as => :u do |f| %>
         <p id="user_field"> Username:</br> <%= f.text_field :user %> </p>
         <p id="pw_field"> Password:</br> <%= f.password_field :password %></p>
-        <!--<input id="signin" name="submit_action" type="submit" value="Signin">-->
-        <!--<input id="signup" name="submit_action" type="submit" value="Sign Up">-->
         <%= f.submit 'Log In', :type => 'submit', :value => 'login' %>
         &nbsp;&nbsp;&nbsp;
-        <%= f.submit 'Sign Up', :type => 'submit', :value => "signup" %>
+        <%= f.submit 'Sign Up', :type => 'submit', :value => "signup", :onclick =>"return validate();" %>
     <% end %>
   </div>
 </div>
