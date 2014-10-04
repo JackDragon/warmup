@@ -29,7 +29,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
 # gem 'unicorn'
 gem 'rspec-rails', "~> 3.0.0"
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 ruby '2.0.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

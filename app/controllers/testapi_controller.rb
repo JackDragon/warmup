@@ -1,6 +1,6 @@
 class TestapiController < ApplicationController
   def test
-    t = `rspec`
+    t = `bundle exec rspec`
     render json: {nrFailed: 0, output: t, totalTests: 10}
   end
 
