@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html>
-<body>
-<div class="Sign_Form">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <%= javascript_include_tag "index", "data-turbolinks-track" => true %> 
+  <!-- We don't really use this right now, but I was testing. -->
+  <script type = "text/javascript">
+  </script>
+</head>
+<body
+<div class="container">
   <% if not flash[:notice] %>
       <%= content_tag :div, "Please enter your credentials below", :id => "flash_0" %>
   <% end %>
   <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
   <% end %>
-  <h1>Sign Up</h1>
-  <%= form_for @user, :as => :u do |f| %>
-      <p> Username:</br> <%= f.text_field :user %> </p>
-      <p> Password:</br> <%= f.password_field :password %></p>
-      <!--<input id="signin" name="submit_action" type="submit" value="Signin">-->
-      <!--<input id="signup" name="submit_action" type="submit" value="Sign Up">-->
-      <%= f.submit 'Log In', :type => 'submit', :value => 'login' %>
-      &nbsp;&nbsp;&nbsp;
-      <%= f.submit 'Sign Up', :type => 'submit', :value => "signup" %>
-  <% end %>
+  <div class = "row">
+    <h1>Sign Up</h1>
+    <%= form_for @user, :as => :u do |f| %>
+        <p id="user_field"> Username:</br> <%= f.text_field :user %> </p>
+        <p id="pw_field"> Password:</br> <%= f.password_field :password %></p>
+        <!--<input id="signin" name="submit_action" type="submit" value="Signin">-->
+        <!--<input id="signup" name="submit_action" type="submit" value="Sign Up">-->
+        <%= f.submit 'Log In', :type => 'submit', :value => 'login' %>
+        &nbsp;&nbsp;&nbsp;
+        <%= f.submit 'Sign Up', :type => 'submit', :value => "signup" %>
+    <% end %>
+  </div>
 </div>
 </ul>
 </body>
