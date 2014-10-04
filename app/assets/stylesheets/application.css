@@ -30,4 +30,23 @@
 html {
     background-color: #E1E1EE;
     text-align: left;
+    font-family: Verdana;
+    background-image: url(bg.jpg);
+}
+
+.container {
+    minwidth: 800px;
+    max-width: 1920px;
+    text-align: center;
+}
+.row {
+    min-width: 400px;
+    max-width: 960px;
+    min-height: 300px;
+    max-height: 600px;
+    text-align: left;
+    /*text-indent: 200px;*/
+    /*margin-left: 200px;*/
+    position:absolute;
+    left: 33%;
 }
